@@ -3,9 +3,9 @@ const app = express()
 
 
 
-//Rota 1
+//Rota Cursos
 app.get('/', (req, res) => {
-    res.send('Cursos')
+    res.send('cursos')
 })
 
 // Rota Desevolvedor
