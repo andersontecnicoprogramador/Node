@@ -18,7 +18,7 @@ ROTA -> É o caminho (url) do projeto
 2. Abrir o Node js Command Prompt
 
 3. Acessar a pasta node pelo Node Js Command Prompt
-	cd C:\Users\nelci.mpjunior\Documents\node
+	cd C:\Users\Anderson M\Documents\Node
 
 4. Versão do Node
 	node -v 
