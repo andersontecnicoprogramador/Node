@@ -43,7 +43,7 @@ Irá fazer várias perguntas, dê enter
 	test command
 	git repository
 	keywords
-	author: Nelci Mariano
+	author: Anderson M
 	license:
 
 9. Atualizar a versão do node (Caso necessário)
