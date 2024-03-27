@@ -1,5 +1,7 @@
 const express = require('express')
-const app = express()
+const app = express();
+
+app.use(express.json())
 
 
 //Rota 1 
@@ -39,6 +41,12 @@ app.get('/sobre', (req, res)=> {
     )
 })
 
+
+// Post
+app.post('cursos',(req,res) => {
+    const {nome} = req.body;
+    return res.send(nome);
+})
 
 //Rota 4
 app.get('/indicador', (req, res)=>{
