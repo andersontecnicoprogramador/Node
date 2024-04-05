@@ -37,6 +37,53 @@ app.get('/lista-cursos', (req, res) => {
     return res.json(senac)
 })
 
+//Inserir um novo curso 
+app.post('/inserir-cursos',(req, res) => {
+    const {name} = req.body;
+    senac.push(name)
+    //Retorno dos dados via json
+    return res.json(senac);
+})
+
+
+app.put('/atualizar-cursos/:index',(req, res) => {
+    //Pega  o index do curso que será  atualizado 
+    const{index} = req.params;
+    const {name} = req.body;
+    senac[index] = name 
+    //Retorno dos dados via json
+    return res.json(senac)
+})
+
+app.delete('/excluir-cursos/:index',(req,res) => {
+    //Paga o index do curso que será deletado
+    const{index} = req.params;
+    //splice -> usado para remover elemento do array
+    //splice(indice, qtd_elementos)
+    senac.splice(index,1)
+    //Retorno dos dados via json
+    return res.json(senac);
+})
+
+//Instancia  cookie-parse
+const cookieParser = require('cookie-parser');
+//middleware no Express que é usado para analisa
+app.use(cookieParser());
+
+//Rota para definir  o cookie 
+app.get('/set-cookie', (req, res) => {
+    //objetivo cookeData - Dados que queremos no cookie
+    const cookeData ={
+        username: 'anderson',
+        language: 'pt-br'
+    };
+    //convertendo os dados para json
+    const cookieJSON = JSON.stringify(cookieData);
+    //configurando o cookie - nome do cookie -> cookieName
+    // maxAge (tempo de vida do cookie em milissegundos) e httponly (definir)
+    res.cookie('cookieName',cookieJSON,)
+})
+
 app.get('/lista-cursos/:index', (req, res) => {
     const {index} = req.params;
     return res.json(senac [index]);
