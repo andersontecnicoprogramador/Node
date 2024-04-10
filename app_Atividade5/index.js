@@ -73,7 +73,7 @@ app.use(cookieParser());
 //Rota para definir  o cookie 
 app.get('/set-cookie', (req, res) => {
     //objetivo cookeData - Dados que queremos no cookie
-    const cookeData ={
+    const cookieData ={
         username: 'anderson',
         language: 'pt-br'
     };
@@ -81,8 +81,21 @@ app.get('/set-cookie', (req, res) => {
     const cookieJSON = JSON.stringify(cookieData);
     //configurando o cookie - nome do cookie -> cookieName
     // maxAge (tempo de vida do cookie em milissegundos) e httponly (definir)
-    res.cookie('cookieName',cookieJSON,)
-})
+    res.cookie('cookieName',cookieJSON,{ maxAge:3600000});
+    res.send('Cookie definido com susseso!');
+});
+
+//Rota para visualizar os cookie especifico
+app.get('/get-cookie', (req,res) => {
+    const cookieName = req.cookies.cookieName;
+    if (cookieName) {
+        res.send(cookieName);
+    } else {
+        res.send('cookie não encontrado');
+    }
+});
+
+
 
 app.get('/lista-cursos/:index', (req, res) => {
     const {index} = req.params;
